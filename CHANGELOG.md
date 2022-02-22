@@ -4,6 +4,7 @@ FEATURES:
 
  - Add `SetLog()` method for `Terraform` ([#291](https://github.com/hashicorp/terraform-exec/pull/291))
  - Add support for `state pull` and `state push` ([#215](https://github.com/hashicorp/terraform-exec/pull/215))
+ - Add support for `color`, option (defaults to `no-color` ) ([#264](https://github.com/hashicorp/terraform-exec/issues/264))
 
 BUG FIXES:
 
@@ -144,12 +145,12 @@ FEATURES:
 
 BREAKING CHANGES:
  - Add `-detailed-exit-code` to `Terraform.Plan` calls, `Terraform.Plan` now also returns a bool indicating if any diff is present ([#55](https://github.com/hashicorp/terraform-exec/issues/55))
- 
+
 FEATURES:
  - Added `Terraform.SetAppendUserAgent` for User-Agent management from consuming applications ([#46](https://github.com/hashicorp/terraform-exec/issues/46))
  - Added `Terraform.WorkspaceList`, `Terraform.WorkspaceNew`, and `Terraform.WorkspaceSelect` along with the `ErrNoWorkspace` error to indicate a workspace does not exist ([#56](https://github.com/hashicorp/terraform-exec/issues/56))
  - Added support for using multiple `VarFile` options ([#61](https://github.com/hashicorp/terraform-exec/issues/61))
- 
+
 BUG FIXES:
  - Fix bug with checking for empty path before executing version command ([#62](https://github.com/hashicorp/terraform-exec/issues/62))
 
