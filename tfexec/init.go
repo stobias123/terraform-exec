@@ -116,7 +116,7 @@ func (tf *Terraform) initCmd(ctx context.Context, opts ...InitOption) (*exec.Cmd
 		o.configureInit(&c)
 	}
 
-	args := []string{"init", "-no-color", "-force-copy", "-input=false"}
+	args := []string{"init", "-force-copy", "-input=false"}
 
 	// string opts: only pass if set
 	if c.fromModule != "" {
