@@ -180,6 +180,15 @@ func (tf *Terraform) buildEnv(mergeEnv map[string]string) []string {
 }
 
 func (tf *Terraform) buildTerraformCmd(ctx context.Context, mergeEnv map[string]string, args ...string) *exec.Cmd {
+	if tf.Colors {
+		for i, arg := range args {
+			if arg == "no-colors" {
+				// Remove "no-colors" from the args slice
+				args = append(args[:i], args[i+1:]...)
+				break
+			}
+		}
+	}
 	cmd := exec.CommandContext(ctx, tf.execPath, args...)
 
 	cmd.Env = tf.buildEnv(mergeEnv)

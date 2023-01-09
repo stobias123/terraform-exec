@@ -32,14 +32,14 @@ type printfer interface {
 // but it ignores certain environment variables that are managed within the code and prohibits
 // setting them through SetEnv:
 //
-//  - TF_APPEND_USER_AGENT
-//  - TF_IN_AUTOMATION
-//  - TF_INPUT
-//  - TF_LOG
-//  - TF_LOG_PATH
-//  - TF_REATTACH_PROVIDERS
-//  - TF_DISABLE_PLUGIN_TLS
-//  - TF_SKIP_PROVIDER_VERIFY
+//   - TF_APPEND_USER_AGENT
+//   - TF_IN_AUTOMATION
+//   - TF_INPUT
+//   - TF_LOG
+//   - TF_LOG_PATH
+//   - TF_REATTACH_PROVIDERS
+//   - TF_DISABLE_PLUGIN_TLS
+//   - TF_SKIP_PROVIDER_VERIFY
 type Terraform struct {
 	execPath           string
 	workingDir         string
@@ -47,6 +47,7 @@ type Terraform struct {
 	disablePluginTLS   bool
 	skipProviderVerify bool
 	env                map[string]string
+	colors             bool
 
 	stdout io.Writer
 	stderr io.Writer
@@ -110,6 +111,11 @@ func (tf *Terraform) SetEnv(env map[string]string) error {
 
 	tf.env = env
 	return nil
+}
+
+// SetColor allows you to set the TF_CLI_ARGS_color environment variable.
+func (tf *Terraform) SetColor(color bool) {
+	tf.colors = color
 }
 
 // SetLogger specifies a logger for tfexec to use.
